@@ -1,0 +1,375 @@
+/* ExcaliVault - Minimal Popup Styles */
+
+:root {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-card: #0f3460;
+  --text-primary: #eaeaea;
+  --text-secondary: #a0a0a0;
+  --accent: #e94560;
+  --accent-hover: #ff6b6b;
+  --success: #10b981;
+  --border: #2d3748;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  min-height: 400px;
+  max-height: 500px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header h1 span {
+  font-size: 18px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Search */
+.search-container {
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Content */
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+}
+
+/* Drawing Grid */
+.drawings-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Drawing Card */
+.drawing-card {
+  background: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.drawing-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.drawing-card.active {
+  border-color: var(--accent);
+}
+
+.drawing-preview {
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.drawing-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drawing-preview .placeholder {
+  color: var(--text-secondary);
+  font-size: 24px;
+}
+
+.drawing-info {
+  padding: 8px;
+}
+
+.drawing-name {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 4px;
+}
+
+.drawing-date {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+.drawing-actions {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px 8px;
+}
+
+/* Buttons */
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--bg-card);
+}
+
+.btn-icon {
+  padding: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  background: var(--bg-card);
+}
+
+.btn-danger {
+  background: transparent;
+  color: #ef4444;
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.empty-state span {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 20px;
+  width: 280px;
+  box-shadow: var(--shadow);
+}
+
+.modal h2 {
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 16px;
+  outline: none;
+}
+
+.modal input:focus {
+  border-color: var(--accent);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--success);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  z-index: 200;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px;
+  min-width: 120px;
+  box-shadow: var(--shadow);
+  z-index: 50;
+}
+
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-card);
+}
+
+/* Scrollbar */
+.content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.content::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.content::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
